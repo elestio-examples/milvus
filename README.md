@@ -1,2 +1,67 @@
-# milvus
-Deploy Milvus with CI/CD on Elestio
+# Milvus CI/CD pipeline
+
+<a href="https://dash.elest.io/deploy?source=cicd&social=dockerCompose&url=https://github.com/elestio-examples/milvus"><img src="deploy-on-elestio.png" alt="Deploy on Elest.io" width="180px" /></a>
+
+Deploy Milvus server with CI/CD on Elestio
+
+<img src="milvus.png" style='width: 100%;'/>
+<br/>
+<br/>
+
+# Once deployed ...
+
+Milvus credentials:
+
+    URL: https://[CI_CD_DOMAIN]
+    login: root
+    password: [ADMIN_PASSWORD]
+
+# Using Milvus
+
+## Installation
+
+To use the Milvus SDK for Node.js, install it with:
+
+    npm install @zilliz/milvus2-sdk-node
+
+## Initialization
+
+nitialize your Milvus instance in Node.js with the following code:
+
+    const { MilvusClient } = require("@zilliz/milvus2-sdk-node");
+
+    const address = "[CI_CD_DOMAIN]:19530";
+
+    client = new MilvusClient({
+        address,
+        username: "root",
+        password: "[ADMIN_PASSWORD]",
+    });
+
+## Creating a Database
+
+You can create a database with the following code:
+
+    const createDatabase = async () => {
+        res = await client.createDatabase({
+            db_name: "my_database",
+        });
+
+        console.log(res);
+    };
+    createDatabase()
+
+## List databases
+
+You can list all databases with the following code:
+
+    const listDatabases = async () => {
+        res = await client.listDatabases();
+
+        console.log(res);
+    };
+    listDatabases()
+
+## Documentation
+
+For more information, visit https://milvus.io/docs
