@@ -12,7 +12,7 @@ Deploy Milvus server with CI/CD on Elestio
 
 Milvus credentials:
 
-    URL: https://[CI_CD_DOMAIN]
+    URL: https://[CI_CD_DOMAIN]:19530
     login: root
     password: [ADMIN_PASSWORD]
 
